@@ -30,34 +30,6 @@ TaskFlow — это веб-приложение для организации к
 | **Тестирование** | Pytest |
 | **Документация** | Swagger (drf-yasg) |
 
-## 📁 Структура проекта
-taskflow/
-├── backend/ # Django приложение
-│ ├── apps/ # Все приложения
-│ │ ├── accounts/ # Профили пользователей
-│ │ │ ├── models.py # Модель Profile
-│ │ │ ├── serializers.py # ProfileSerializer
-│ │ │ ├── views.py # ProfileViewSet
-│ │ │ └── urls.py # Маршруты для профилей
-│ │ ├── projects/ # Управление проектами
-│ │ │ ├── models.py # Модель Project
-│ │ │ ├── serializers.py # ProjectSerializer
-│ │ │ ├── views.py # ProjectViewSet
-│ │ │ └── urls.py # Маршруты для проектов
-│ │ └── tasks/ # Задачи и комментарии
-│ │ ├── models.py # Модели Task и Comment
-│ │ ├── serializers.py # TaskSerializer, CommentSerializer
-│ │ ├── views.py # TaskViewSet, CommentViewSet
-│ │ └── urls.py # Маршруты для задач
-│ ├── config/ # Настройки Django
-│ │ ├── settings.py # Основные настройки
-│ │ ├── urls.py # Главные маршруты
-│ │ └── wsgi.py
-│ ├── manage.py
-│ └── requirements.txt # Зависимости
-├── docker-compose.yml # Оркестрация контейнеров
-├── .env.example # Пример переменных окружения
-└── README.md # Документация
 
 ## 🚀 Быстрый старт
 
