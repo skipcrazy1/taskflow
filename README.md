@@ -75,19 +75,23 @@ taskflow/
    cd taskflow
    ```
 Создать файл с переменными окружения
-
+```bash
 cp .env.example .env
+```
 При необходимости отредактируйте .env.
 
 Запустить контейнеры
-
+```bash
 docker-compose up -d --build
+```
 Применить миграции
-
+```bash
 docker-compose exec web python manage.py migrate
+```
 Создать суперпользователя для админки
-
+```bash
 docker-compose exec web python manage.py createsuperuser
+```
 Открыть в браузере
 
 Админка: http://localhost:8000/admin
@@ -129,11 +133,13 @@ GET	/api/profiles/{id}/	Получить профиль пользователя
 
 ##🧪 Примеры запросов
 Создание проекта
+```bash
 curl -X POST http://localhost:8000/api/projects/ \
   -H "Content-Type: application/json" \
   -d '{"name": "Мой первый проект", "description": "Описание проекта"}'
-
+```
 Создание задачи
+```bash
 curl -X POST http://localhost:8000/api/tasks/ \
   -H "Content-Type: application/json" \
   -d '{
@@ -143,26 +149,23 @@ curl -X POST http://localhost:8000/api/tasks/ \
     "priority": "HIGH",
     "project": 1
   }'
-
+```
 Добавление комментария
+```bash
 curl -X POST http://localhost:8000/api/comments/ \
   -H "Content-Type: application/json" \
   -d '{
     "task": 1,
     "text": "Новый комментарий к задаче"
   }'
-
+```
 
 ##🔮 Планы по развитию
-JWT-аутентификация
-
-Система прав доступа (участники проектов)
-
-Асинхронные уведомления через Celery
-
-Загрузка файлов к задачам
-
-WebSocket для real-time обновлений
+– JWT-аутентификация
+– Система прав доступа (участники проектов)
+– Асинхронные уведомления через Celery
+– Загрузка файлов к задачам
+– WebSocket для real-time обновлений
 
 ##👨‍💻 Автор
 Мурад Галиев
