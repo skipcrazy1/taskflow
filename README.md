@@ -79,29 +79,45 @@ API профилей: http://localhost:8000/api/profiles/
 Проекты
 Метод	URL	Описание
 GET	/api/projects/	Список всех проектов
+
 POST	/api/projects/	Создать новый проект
+
 GET	/api/projects/{id}/	Получить проект по ID
+
 PUT	/api/projects/{id}/	Полностью обновить проект
+
 PATCH	/api/projects/{id}/	Частично обновить проект
+
 DELETE	/api/projects/{id}/	Удалить проект
+
 
 Задачи
 Метод	URL	Описание
 GET	/api/tasks/	Список всех задач
+
 POST	/api/tasks/	Создать новую задачу
+
 GET	/api/tasks/{id}/	Получить задачу по ID
+
 PUT	/api/tasks/{id}/	Обновить задачу
+
 DELETE	/api/tasks/{id}/	Удалить задачу
+
 
 Комментарии
 Метод	URL	Описание
 GET	/api/comments/	Список всех комментариев
+
 POST	/api/comments/	Добавить комментарий к задаче
+
 GET	/api/comments/{id}/	Получить комментарий
+
 DELETE	/api/comments/{id}/	Удалить комментарий
+
 Профили
 Метод	URL	Описание
 GET	/api/profiles/	Список всех профилей
+
 GET	/api/profiles/{id}/	Получить профиль пользователя
 
 ## 🧪 Примеры запросов
