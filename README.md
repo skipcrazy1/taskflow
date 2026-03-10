@@ -75,6 +75,7 @@ API задач: http://localhost:8000/api/tasks/
 API профилей: http://localhost:8000/api/profiles/
 
 ## 📋 API Endpoints
+
 Проекты
 Метод	URL	Описание
 GET	/api/projects/	Список всех проектов
@@ -104,6 +105,7 @@ GET	/api/profiles/	Список всех профилей
 GET	/api/profiles/{id}/	Получить профиль пользователя
 
 ## 🧪 Примеры запросов
+
 Создание проекта
 ```bash
 curl -X POST http://localhost:8000/api/projects/ \
@@ -133,10 +135,15 @@ curl -X POST http://localhost:8000/api/comments/ \
 ```
 
 ## 🔮 Планы по развитию
+
 – JWT-аутентификация
+
 – Система прав доступа (участники проектов)
+
 – Асинхронные уведомления через Celery
+
 – Загрузка файлов к задачам
+
 – WebSocket для real-time обновлений
 
 ## 👨‍💻 Автор
