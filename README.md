@@ -29,6 +29,7 @@ TaskFlow — это веб-приложение для организации к
 | **Фоновые задачи** | Celery, Celery Beat |
 | **Тестирование** | Pytest |
 | **Документация** | Swagger (drf-yasg) |
+| **Аутентификация** | JWT (djangorestframework-simplejwt) |
 
 
 ## 🚀 Быстрый старт
@@ -109,6 +110,13 @@ API профилей: http://localhost:8000/api/profiles/
 | GET | `/api/profiles/` | Список всех профилей |
 | GET | `/api/profiles/{id}/` | Получить профиль пользователя |
 
+### Аутентификация
+| Метод | URL | Описание |
+|-------|-----|----------|
+| POST | `/api/token/` | Получить access и refresh токены |
+| POST | `/api/token/refresh/` | Обновить access токен |
+| POST | `/api/token/verify/` | Проверить валидность токена |
+
 ## 🧪 Примеры запросов
 
 Создание проекта
@@ -137,6 +145,41 @@ curl -X POST http://localhost:8000/api/comments/ \
     "task": 1,
     "text": "Новый комментарий к задаче"
   }'
+```
+
+## 🔐 Аутентификация
+
+В проекте используется JWT (JSON Web Token) аутентификация.
+
+### Получение токена
+```bash
+POST /api/token/
+Content-Type: application/json
+
+{
+  "username": "your_username",
+  "password": "your_password"
+}
+```
+
+### Обновление токена
+```bash
+POST /api/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "your_refresh_token"
+}
+```
+
+### Проверка токена
+```bash
+POST /api/token/verify/
+Content-Type: application/json
+
+{
+  "token": "your_access_token"
+}
 ```
 
 ## 🔮 Планы по развитию
