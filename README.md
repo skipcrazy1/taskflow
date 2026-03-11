@@ -30,34 +30,6 @@ TaskFlow — это веб-приложение для организации к
 | **Тестирование** | Pytest |
 | **Документация** | Swagger (drf-yasg) |
 
-## 📁 Структура проекта
-taskflow/
-├── backend/ # Django приложение
-│ ├── apps/ # Все приложения
-│ │ ├── accounts/ # Профили пользователей
-│ │ │ ├── models.py # Модель Profile
-│ │ │ ├── serializers.py # ProfileSerializer
-│ │ │ ├── views.py # ProfileViewSet
-│ │ │ └── urls.py # Маршруты для профилей
-│ │ ├── projects/ # Управление проектами
-│ │ │ ├── models.py # Модель Project
-│ │ │ ├── serializers.py # ProjectSerializer
-│ │ │ ├── views.py # ProjectViewSet
-│ │ │ └── urls.py # Маршруты для проектов
-│ │ └── tasks/ # Задачи и комментарии
-│ │ ├── models.py # Модели Task и Comment
-│ │ ├── serializers.py # TaskSerializer, CommentSerializer
-│ │ ├── views.py # TaskViewSet, CommentViewSet
-│ │ └── urls.py # Маршруты для задач
-│ ├── config/ # Настройки Django
-│ │ ├── settings.py # Основные настройки
-│ │ ├── urls.py # Главные маршруты
-│ │ └── wsgi.py
-│ ├── manage.py
-│ └── requirements.txt # Зависимости
-├── docker-compose.yml # Оркестрация контейнеров
-├── .env.example # Пример переменных окружения
-└── README.md # Документация
 
 ## 🚀 Быстрый старт
 
@@ -75,19 +47,23 @@ taskflow/
    cd taskflow
    ```
 Создать файл с переменными окружения
-
+```bash
 cp .env.example .env
+```
 При необходимости отредактируйте .env.
 
 Запустить контейнеры
-
+```bash
 docker-compose up -d --build
+```
 Применить миграции
-
+```bash
 docker-compose exec web python manage.py migrate
+```
 Создать суперпользователя для админки
-
+```bash
 docker-compose exec web python manage.py createsuperuser
+```
 Открыть в браузере
 
 Админка: http://localhost:8000/admin
@@ -98,42 +74,51 @@ API задач: http://localhost:8000/api/tasks/
 
 API профилей: http://localhost:8000/api/profiles/
 
-📋 API Endpoints
-Проекты
-Метод	URL	Описание
-GET	/api/projects/	Список всех проектов
-POST	/api/projects/	Создать новый проект
-GET	/api/projects/{id}/	Получить проект по ID
-PUT	/api/projects/{id}/	Полностью обновить проект
-PATCH	/api/projects/{id}/	Частично обновить проект
-DELETE	/api/projects/{id}/	Удалить проект
+## 📋 API Endpoints
 
-Задачи
-Метод	URL	Описание
-GET	/api/tasks/	Список всех задач
-POST	/api/tasks/	Создать новую задачу
-GET	/api/tasks/{id}/	Получить задачу по ID
-PUT	/api/tasks/{id}/	Обновить задачу
-DELETE	/api/tasks/{id}/	Удалить задачу
+### Проекты
+| Метод | URL | Описание |
+|-------|-----|----------|
+| GET | `/api/projects/` | Список всех проектов |
+| POST | `/api/projects/` | Создать новый проект |
+| GET | `/api/projects/{id}/` | Получить проект по ID |
+| PUT | `/api/projects/{id}/` | Полностью обновить проект |
+| PATCH | `/api/projects/{id}/` | Частично обновить проект |
+| DELETE | `/api/projects/{id}/` | Удалить проект |
 
-Комментарии
-Метод	URL	Описание
-GET	/api/comments/	Список всех комментариев
-POST	/api/comments/	Добавить комментарий к задаче
-GET	/api/comments/{id}/	Получить комментарий
-DELETE	/api/comments/{id}/	Удалить комментарий
-Профили
-Метод	URL	Описание
-GET	/api/profiles/	Список всех профилей
-GET	/api/profiles/{id}/	Получить профиль пользователя
+### Задачи
+| Метод | URL | Описание |
+|-------|-----|----------|
+| GET | `/api/tasks/` | Список всех задач |
+| POST | `/api/tasks/` | Создать новую задачу |
+| GET | `/api/tasks/{id}/` | Получить задачу по ID |
+| PUT | `/api/tasks/{id}/` | Обновить задачу |
+| DELETE | `/api/tasks/{id}/` | Удалить задачу |
 
-##🧪 Примеры запросов
+### Комментарии
+| Метод | URL | Описание |
+|-------|-----|----------|
+| GET | `/api/comments/` | Список всех комментариев |
+| POST | `/api/comments/` | Добавить комментарий к задаче |
+| GET | `/api/comments/{id}/` | Получить комментарий |
+| DELETE | `/api/comments/{id}/` | Удалить комментарий |
+
+### Профили
+| Метод | URL | Описание |
+|-------|-----|----------|
+| GET | `/api/profiles/` | Список всех профилей |
+| GET | `/api/profiles/{id}/` | Получить профиль пользователя |
+
+## 🧪 Примеры запросов
+
 Создание проекта
+```bash
 curl -X POST http://localhost:8000/api/projects/ \
   -H "Content-Type: application/json" \
   -d '{"name": "Мой первый проект", "description": "Описание проекта"}'
-
+```
 Создание задачи
+```bash
 curl -X POST http://localhost:8000/api/tasks/ \
   -H "Content-Type: application/json" \
   -d '{
@@ -143,29 +128,32 @@ curl -X POST http://localhost:8000/api/tasks/ \
     "priority": "HIGH",
     "project": 1
   }'
-
+```
 Добавление комментария
+```bash
 curl -X POST http://localhost:8000/api/comments/ \
   -H "Content-Type: application/json" \
   -d '{
     "task": 1,
     "text": "Новый комментарий к задаче"
   }'
+```
 
+## 🔮 Планы по развитию
 
-##🔮 Планы по развитию
-JWT-аутентификация
+– JWT-аутентификация
 
-Система прав доступа (участники проектов)
+– Система прав доступа (участники проектов)
 
-Асинхронные уведомления через Celery
+– Асинхронные уведомления через Celery
 
-Загрузка файлов к задачам
+– Загрузка файлов к задачам
 
-WebSocket для real-time обновлений
+– WebSocket для real-time обновлений
 
-##👨‍💻 Автор
+## 👨‍💻 Автор
 Мурад Галиев
 
 GitHub: @skipcrazy1
+
 Telegram: @columbiuss
